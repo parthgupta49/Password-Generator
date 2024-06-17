@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Generator</title>
+    
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "League Spartan", sans-serif;
+        }
+
+        .wrapper {
+            background: linear-gradient(231deg,
+                    rgba(22, 6, 40, 1) 0%,
+                    rgba(52, 28, 79, 1) 50%,
+                    rgba(88, 7, 125, 1) 100%);
+        }
+
+        #pwd-strength {
+            box-shadow: 0 0 12px white;
+        }
+
+        #generate-pwd-btn {
+            box-shadow: 0px 5px 0px #ffe53d;
+        }
+
+        #pwd-length {
+            appearance: none;
+            /* Removes default styling */
+            width: 100%;
+            /* Sets width to fill its container */
+            height: 0.9rem;
+            /* Adjust height as needed */
+            background: #bc15f4;
+            /* Background color */
+            border-radius: 1rem;
+            /* Rounded corners */
+        }
+
+        #pwd-length:focus {
+            border: 3px solid #ffe53d;
+        }
+
+        #pwd-length::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            /* Removes default styling */
+            width: 30px;
+            /* Width of the thumb */
+            height: 30px;
+            /* Height of the thumb */
+            background: #ffe53d;
+            /* Thumb color */
+            box-shadow: 0 0 5px #ffe53d;
+            border-radius: 50%;
+            /* Rounded shape */
+            cursor: pointer;
+            /* Cursor style */
+        }
+
+        #pwd-length::-webkit-slider-thumb:hover {
+            background: #160628;
+            /* New color on hover */
+            border: 2px solid #ffe53d;
+            box-shadow: 0 0 30px #ffe53d;
+        }
+
+        /* Hide the default checkbox */
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        /* Style the label to mimic a checkbox */
+        label {
+            display: inline-block;
+            position: relative;
+            padding-left: 40px;
+            /* Adjust as needed */
+            cursor: pointer;
+        }
+
+        /* Create the custom checkbox design */
+        label:before {
+            content: "";
+            width: 20px;
+            /* Adjust the size of the custom checkbox */
+            height: 20px;
+            /* Adjust the size of the custom checkbox */
+            border: 1px solid #42f5ec;
+            /* Border color */
+            border-radius: 6px;
+            /* Rounded corners */
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+
+        /* Style the custom checkbox when it's checked */
+        input[type="checkbox"]:checked+label:before {
+            background-color: #42f5ec;
+            /* Background color when checked */
+        }
+
+        /* Create the checkmark inside the custom checkbox */
+        label:after {
+            content: "\2713";
+            /* Unicode checkmark character */
+            font-size: 1.2rem;
+            /* Adjust as needed */
+            font-weight: bolder;
+            color: black;
+            /* Color of the checkmark */
+            position: absolute;
+            left: 2px;
+            /* Adjust as needed */
+            top: 0px;
+            /* Adjust as needed */
+            visibility: hidden;
+            /* Initially hidden */
+        }
+
+        /* Show the checkmark when the checkbox is checked */
+        input[type="checkbox"]:checked+label:after {
+            visibility: visible;
+        }
+
+        #copyMsssge{
+            transition: 3s all ease-in;
+        }
+    </style>
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+    <!-- <style>
+:root {
+    --dk-violet: hsl(268, 75%, 9%);
+    --lt-violet: hsl(268, 47%, 21%);
+    --lt-violet2: hsl(281, 89%, 26%);
+    --vb-violet: hsl(285, 91%, 52%);
+    --vb-violet2: hsl(290, 70%, 36%);
+    --vb-yellow: hsl(52, 100%, 62%);
+    --pl-white: hsl(0, 0%, 100%);
+    --vb-cyan: hsl(176, 100%, 44%);
+    --vb-cyan2: hsl(177, 92%, 70%);
+    --dk-text: hsl(198, 20%, 13%);
+} -->
+    <!-- wrapper -->
+    <div class="wrapper w-[100vw] h-[100vh] flex flex-col justify-center items-center gap-6">
+        <h1 class="text-center text-[#f2ff9f] leading-6 tracking-widest uppercase text-3xl font-bold">
+            PASSWORD GENERATOR
+        </h1>
+
+        <!-- here the generated pwd will be shown  -->
+        <div
+            class="flex justify-between gap-5 h-[5rem] w-[28.5rem] bg-[#160628] rounded-2xl items-center px-[1rem] border-b-[0.4rem] border-[#58077d] relative">
+            <!-- here the generated pwd is shown -->
+            <!-- <span ></span> -->
+            <input type="text" placeholder="PASSWORD" value="" class="text-[#ffe53d] text-2xl tracking-wider font-bold w-fit bg-transparent border-none focus:outline-none placeholder:text-2xl placeholder:text-[#ffe53d] placeholder:opacity-50" readonly data-passwordDisplay>
+            <!-- copy btn icon -->
+            <span id="copyButton" class="cursor-pointer relative"><i class="fa-regular fa-clone fa-lg" style="color: #42f5ec"></i><div id="copyMsssge" class="absolute bg-[#871c9c] text-[#ffe53d] py-1 px-2 rounded-3xl -top-10 -left-5  transition-all invisible text-xl" data-copyMsg>Copied</div>
+            </span>
+        </div>
+
+        <!-- main container -->
+        <div
+            class="flex flex-col h-[27.5rem] w-[28.5rem] bg-[#160628] rounded-2xl gap-7 px-[2rem] py-[2rem] border-b-[0.4rem] border-[#58077d]">
+            <!-- pwd length -->
+            <div class="flex items-center justify-between">
+                <span class="text-white text-2xl capitalize">Password length</span>
+                <span class="text-[#ffe53d] text-2xl" id="pwd-length-value">10</span>
+            </div>
+
+            <!-- other stuff -->
+
+            <!-- slider - input how many letters would be there in the pwd -->
+            <input type="range" name="pwd-length" id="pwd-length" min="1" max="20" step="1" />
+
+            <div class="flex flex-col text-xl font-spartan leading-8 tracking-wide">
+                <div class="flex gap-4">
+                    <input type="checkbox" name="uppercase" id="uppercase" checked />
+                    <label for="uppercase" class="text-white">Include Uppercase Letters</label>
+                </div>
+                <div class="flex gap-4">
+                    <input type="checkbox" name="lowercase" id="lowercase" />
+                    <label for="lowercase" class="text-white">Include Lowercase Letters</label>
+                </div>
+                <div class="flex gap-4">
+                    <input type="checkbox" name="numbers" id="numbers" />
+                    <label for="numbers" class="text-white">Include Numbers</label>
+                </div>
+                <div class="flex gap-4">
+                    <input type="checkbox" name="symbols" id="symbols" />
+                    <label for="symbols" class="text-white">Include Symbols</label>
+                </div>
+            </div>
+
+            <!-- Strength of the password -->
+            <div class="flex items-center justify-between">
+                <span class="text-white text-2xl capitalize">Strength</span>
+                <div class="rounded-full h-[1.5rem] w-[1.5rem] bg-white opacity-80 transition-all duration-200 ease-in-out" id="pwd-strength" data-displayPwdStrength></div>
+            </div>
+
+            <!-- generate btn -->
+            <button class="bg-[#bc15f4] w-full p-3 rounded-xl" id="generate-pwd-btn">
+                <span class="text-[#ffe53d] text-xl font-bold tracking-wider">GENERATE PASSWORD</span>
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>
