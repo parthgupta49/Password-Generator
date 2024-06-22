@@ -5,8 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Password Generator</title>
-    
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet" />
@@ -132,7 +131,7 @@
             visibility: visible;
         }
 
-        #copyMsssge{
+        #copyMsssge {
             transition: 3s all ease-in;
         }
     </style>
@@ -141,8 +140,9 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <link rel="icon" type="image/x-icon" href="https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/128/Heart-Shadow-icon.png">
-<!--     <script src="./script.js" defer></script> -->
+    <link rel="icon" type="image/x-icon"
+        href="https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/128/Heart-Shadow-icon.png">
+    <!-- <script src="./script.js" defer></script> -->
 </head>
 
 <body>
@@ -161,8 +161,8 @@
 } -->
     <!-- wrapper -->
     <div class="wrapper min-h-screen flex flex-col sm:justify-center sm:items-center ">
-        <div class="flex flex-col gap-6 items-center">
-            <h1 class="text-center text-[#f2ff9f] tracking-widest uppercase text-3xl font-bold leading-10 mt-[5rem]">
+        <div class="flex flex-col gap-6  items-center pt-[2rem]">
+            <h1 class="text-center text-[#f2ff9f] tracking-widest uppercase text-3xl font-bold leading-10  ">
                 PASSWORD GENERATOR
             </h1>
     
@@ -228,10 +228,15 @@
                     <span class="text-[#ffe53d] text-xl font-bold tracking-wider">GENERATE PASSWORD</span>
                 </button>
             </div>
+
+            <p class="text-lg text-white ">Made with &#10084; |&nbsp; Parth Gupta</p>
         </div>
     </div>
+
     <script>
-        const pwdDisplay = document.querySelector("[data-passwordDisplay]");
+        
+
+const pwdDisplay = document.querySelector("[data-passwordDisplay]");
 const copyMsg = document.querySelector("[data-copyMsg]");
 
 const pwdStrengthMsg = document.querySelector("[data-displayPwdStrength]");
@@ -260,7 +265,6 @@ function handleSlider() {
   // this will be displayed in the screen
 }
 
-// console.log(Math.floor(Math.random()*9+1)); this will generate a random number between 1 and 9
 
 function getRandomNumbers(length = 1) {
   let randInt = "";
@@ -440,12 +444,6 @@ generatePwdBtn.addEventListener("click", () => {
       pwd += fun();
     }
   )
-  // console.log("the checkbox count is : ",checkboxCount)
-  // console.log("the password is : ",pwdLength);
-
-  // let getTheRndom = getRandomPassword(pwdLength-checkedCheckboxList.length);
-  // console.log("the pwd before adding the random stuff",pwd);
-  // pwd+=getTheRndom;
 
 
   // the remaining addition
@@ -457,12 +455,27 @@ generatePwdBtn.addEventListener("click", () => {
     pwd += sme;
     
   }
-  pwdDisplay.value = pwd
+  let new_pwd = shufflePassword(Array.from(pwd));
+  pwdDisplay.value = new_pwd
 
   calculateStrength();
 
   checkedCheckboxList = []
 });
+
+function shufflePassword(password) {
+  console.log("Before",password)
+  for (let i = password.length-1; i>=0 ; i--) {
+    let j = Math.floor(Math.random() * i + 1);
+    let temp = password[i];
+    password[i] = password[j];
+    password[j] = temp;
+  }
+  console.log("After",password);
+  let str = "";
+  password.forEach((element)=>{str+=element});
+  return str;
+}
     </script>
 </body>
 
