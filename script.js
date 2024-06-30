@@ -1,18 +1,3 @@
-// endpoint for aws
-// lab-db.c1wntanm7vso.us-east-1.rds.amazonaws.com
-
-// what all the functions are required ?
-// 1. copyContent()
-// 2. handleSlider()
-// 3. generatePassword()
-// 4. setIndicator()
-// 5. getRandomInteger(min,max)
-// 6. getRandomUppercase()
-// 7. getRandomLowercase()
-// 8. getRandomNumber()
-// 9. getRandomSymbol()
-//10. calculatePwdStrength()
-
 const pwdDisplay = document.querySelector("[data-passwordDisplay]");
 const copyMsg = document.querySelector("[data-copyMsg]");
 
@@ -42,7 +27,6 @@ function handleSlider() {
   // this will be displayed in the screen
 }
 
-// console.log(Math.floor(Math.random()*9+1)); this will generate a random number between 1 and 9
 
 function getRandomNumbers(length = 1) {
   let randInt = "";
