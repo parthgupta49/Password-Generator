@@ -2,151 +2,151 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Password Generator</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Password Generator</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "League Spartan", sans-serif;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "League Spartan", sans-serif;
+    }
 
-        .wrapper {
-            background: linear-gradient(231deg,
-                    rgba(22, 6, 40, 1) 0%,
-                    rgba(52, 28, 79, 1) 50%,
-                    rgba(88, 7, 125, 1) 100%);
-        }
+    .wrapper {
+      background: linear-gradient(231deg,
+          rgba(22, 6, 40, 1) 0%,
+          rgba(52, 28, 79, 1) 50%,
+          rgba(88, 7, 125, 1) 100%);
+    }
 
-        #pwd-strength {
-            box-shadow: 0 0 12px white;
-        }
+    #pwd-strength {
+      box-shadow: 0 0 12px white;
+    }
 
-        #generate-pwd-btn {
-            box-shadow: 0px 5px 0px #ffe53d;
-        }
+    #generate-pwd-btn {
+      box-shadow: 0px 5px 0px #ffe53d;
+    }
 
-        #pwd-length {
-            appearance: none;
-            /* Removes default styling */
-            width: 100%;
-            /* Sets width to fill its container */
-            height: 0.9rem;
-            /* Adjust height as needed */
-            background: #bc15f4;
-            /* Background color */
-            border-radius: 1rem;
-            /* Rounded corners */
-        }
+    #pwd-length {
+      appearance: none;
+      /* Removes default styling */
+      width: 100%;
+      /* Sets width to fill its container */
+      height: 0.9rem;
+      /* Adjust height as needed */
+      background: #bc15f4;
+      /* Background color */
+      border-radius: 1rem;
+      /* Rounded corners */
+    }
 
-        #pwd-length:focus {
-            border: 3px solid #ffe53d;
-        }
+    #pwd-length:focus {
+      border: 3px solid #ffe53d;
+    }
 
-        #pwd-length::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            /* Removes default styling */
-            width: 30px;
-            /* Width of the thumb */
-            height: 30px;
-            /* Height of the thumb */
-            background: #ffe53d;
-            /* Thumb color */
-            box-shadow: 0 0 5px #ffe53d;
-            border-radius: 50%;
-            /* Rounded shape */
-            cursor: pointer;
-            /* Cursor style */
-        }
+    #pwd-length::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      /* Removes default styling */
+      width: 30px;
+      /* Width of the thumb */
+      height: 30px;
+      /* Height of the thumb */
+      background: #ffe53d;
+      /* Thumb color */
+      box-shadow: 0 0 5px #ffe53d;
+      border-radius: 50%;
+      /* Rounded shape */
+      cursor: pointer;
+      /* Cursor style */
+    }
 
-        #pwd-length::-webkit-slider-thumb:hover {
-            background: #160628;
-            /* New color on hover */
-            border: 2px solid #ffe53d;
-            box-shadow: 0 0 30px #ffe53d;
-        }
+    #pwd-length::-webkit-slider-thumb:hover {
+      background: #160628;
+      /* New color on hover */
+      border: 2px solid #ffe53d;
+      box-shadow: 0 0 30px #ffe53d;
+    }
 
-        /* Hide the default checkbox */
-        input[type="checkbox"] {
-            display: none;
-        }
+    /* Hide the default checkbox */
+    input[type="checkbox"] {
+      display: none;
+    }
 
-        /* Style the label to mimic a checkbox */
-        label {
-            display: inline-block;
-            position: relative;
-            padding-left: 40px;
-            /* Adjust as needed */
-            cursor: pointer;
-        }
+    /* Style the label to mimic a checkbox */
+    label {
+      display: inline-block;
+      position: relative;
+      padding-left: 40px;
+      /* Adjust as needed */
+      cursor: pointer;
+    }
 
-        /* Create the custom checkbox design */
-        label:before {
-            content: "";
-            width: 20px;
-            /* Adjust the size of the custom checkbox */
-            height: 20px;
-            /* Adjust the size of the custom checkbox */
-            border: 1px solid #42f5ec;
-            /* Border color */
-            border-radius: 6px;
-            /* Rounded corners */
-            position: absolute;
-            left: 0;
-            top: 5px;
-        }
+    /* Create the custom checkbox design */
+    label:before {
+      content: "";
+      width: 20px;
+      /* Adjust the size of the custom checkbox */
+      height: 20px;
+      /* Adjust the size of the custom checkbox */
+      border: 1px solid #42f5ec;
+      /* Border color */
+      border-radius: 6px;
+      /* Rounded corners */
+      position: absolute;
+      left: 0;
+      top: 5px;
+    }
 
-        /* Style the custom checkbox when it's checked */
-        input[type="checkbox"]:checked+label:before {
-            background-color: #42f5ec;
-            /* Background color when checked */
-        }
+    /* Style the custom checkbox when it's checked */
+    input[type="checkbox"]:checked+label:before {
+      background-color: #42f5ec;
+      /* Background color when checked */
+    }
 
-        /* Create the checkmark inside the custom checkbox */
-        label:after {
-            content: "\2713";
-            /* Unicode checkmark character */
-            font-size: 1.2rem;
-            /* Adjust as needed */
-            font-weight: bolder;
-            color: black;
-            /* Color of the checkmark */
-            position: absolute;
-            left: 2px;
-            /* Adjust as needed */
-            top: 0px;
-            /* Adjust as needed */
-            visibility: hidden;
-            /* Initially hidden */
-        }
+    /* Create the checkmark inside the custom checkbox */
+    label:after {
+      content: "\2713";
+      /* Unicode checkmark character */
+      font-size: 1.2rem;
+      /* Adjust as needed */
+      font-weight: bolder;
+      color: black;
+      /* Color of the checkmark */
+      position: absolute;
+      left: 2px;
+      /* Adjust as needed */
+      top: 0px;
+      /* Adjust as needed */
+      visibility: hidden;
+      /* Initially hidden */
+    }
 
-        /* Show the checkmark when the checkbox is checked */
-        input[type="checkbox"]:checked+label:after {
-            visibility: visible;
-        }
+    /* Show the checkmark when the checkbox is checked */
+    input[type="checkbox"]:checked+label:after {
+      visibility: visible;
+    }
 
-        #copyMsssge {
-            transition: 3s all ease-in;
-        }
-    </style>
-    <link rel="stylesheet" href="./main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    #copyMsssge {
+      transition: 3s all ease-in;
+    }
+  </style>
+  <link rel="stylesheet" href="./main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="icon" type="image/x-icon"
-        href="https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/128/Heart-Shadow-icon.png">
-    <!-- <script src="./script.js" defer></script> -->
+  <link rel="icon" type="image/x-icon"
+    href="https://icons.iconarchive.com/icons/designbolts/free-valentine-heart/128/Heart-Shadow-icon.png">
+  <!-- <script src="./script.js" defer></script> -->
 </head>
 
 <body>
-    <!-- <style>
+  <!-- <style>
 :root {
     --dk-violet: hsl(268, 75%, 9%);
     --lt-violet: hsl(268, 47%, 21%);
@@ -159,324 +159,329 @@
     --vb-cyan2: hsl(177, 92%, 70%);
     --dk-text: hsl(198, 20%, 13%);
 } -->
-    <!-- wrapper -->
-    <div class="wrapper min-h-screen flex flex-col sm:justify-center sm:items-center ">
-        <div class="flex flex-col gap-6  items-center pt-[2rem]">
-            <h1 class="text-center text-[#f2ff9f] tracking-widest uppercase text-3xl font-bold leading-10  ">
-                PASSWORD GENERATOR
-            </h1>
-    
-            <!-- here the generated pwd will be shown  -->
-            <div
-                class="flex justify-between h-[5rem] w-fit sm:w-[28.5rem] bg-[#160628] rounded-2xl items-center px-[1rem] border-b-[0.4rem] border-[#58077d] relative">
-                <!-- here the generated pwd is shown -->
-                <!-- <span ></span> -->
-                <input type="text" placeholder="PASSWORD" value=""
-                    class="text-[#ffe53d] text-2xl tracking-wider font-bold w-fit bg-transparent border-none focus:outline-none placeholder:text-2xl placeholder:text-[#ffe53d] placeholder:opacity-50"
-                    readonly data-passwordDisplay>
-                <!-- copy btn icon -->
-                <span id="copyButton" class="cursor-pointer relative"><i class="fa-regular fa-clone fa-lg"
-                        style="color: #42f5ec"></i>
-                    <div id="copyMsssge"
-                        class="absolute bg-[#871c9c] text-[#ffe53d] py-1 px-2 rounded-3xl -top-10 -left-5  transition-all invisible text-xl"
-                        data-copyMsg>Copied</div>
-                </span>
-            </div>
-    
-            <!-- main container -->
-            <div
-                class="flex flex-col h-[27.5rem] w-fit sm:w-[28.5rem] bg-[#160628] rounded-2xl gap-7 px-[2rem] py-[2rem] border-b-[0.4rem] border-[#58077d]">
-                <!-- pwd length -->
-                <div class="flex items-center justify-between">
-                    <span class="text-white text-2xl capitalize">Password length</span>
-                    <span class="text-[#ffe53d] text-2xl" id="pwd-length-value">10</span>
-                </div>
-    
-                <!-- other stuff -->
-    
-                <!-- slider - input how many letters would be there in the pwd -->
-                <input type="range" name="pwd-length" id="pwd-length" min="1" max="20" step="1" />
-    
-                <div class="flex flex-col text-xl font-spartan leading-8 tracking-wide">
-                    <div class="flex gap-4">
-                        <input type="checkbox" name="uppercase" id="uppercase" checked />
-                        <label for="uppercase" class="text-white">Include Uppercase Letters</label>
-                    </div>
-                    <div class="flex gap-4">
-                        <input type="checkbox" name="lowercase" id="lowercase" />
-                        <label for="lowercase" class="text-white">Include Lowercase Letters</label>
-                    </div>
-                    <div class="flex gap-4">
-                        <input type="checkbox" name="numbers" id="numbers" />
-                        <label for="numbers" class="text-white">Include Numbers</label>
-                    </div>
-                    <div class="flex gap-4">
-                        <input type="checkbox" name="symbols" id="symbols" />
-                        <label for="symbols" class="text-white">Include Symbols</label>
-                    </div>
-                </div>
-    
-                <!-- Strength of the password -->
-                <div class="flex items-center justify-between">
-                    <span class="text-white text-2xl capitalize">Strength</span>
-                    <div class="rounded-full h-[1.5rem] w-[1.5rem] bg-white opacity-80 transition-all duration-200 ease-in-out"
-                        id="pwd-strength" data-displayPwdStrength></div>
-                </div>
-    
-                <!-- generate btn -->
-                <button class="bg-[#bc15f4] w-full p-3 rounded-xl" id="generate-pwd-btn">
-                    <span class="text-[#ffe53d] text-xl font-bold tracking-wider">GENERATE PASSWORD</span>
-                </button>
-            </div>
+  <!-- wrapper -->
+  <div class="wrapper min-h-screen flex flex-col sm:justify-center sm:items-center ">
+    <div class="flex flex-col gap-6  items-center pt-[2rem]">
+      <h1 class="text-center text-[#f2ff9f] tracking-widest uppercase text-3xl font-bold leading-10  ">
+        PASSWORD GENERATOR
+      </h1>
 
-            <p class="text-lg text-white ">Made with &#10084; |&nbsp; Parth Gupta</p>
+      <!-- here the generated pwd will be shown  -->
+      <div
+        class="flex justify-between h-[5rem] w-fit sm:w-[28.5rem] bg-[#160628] rounded-2xl items-center px-[1rem] border-b-[0.4rem] border-[#58077d] relative">
+        <!-- here the generated pwd is shown -->
+        <!-- <span ></span> -->
+        <input type="text" placeholder="PASSWORD" value=""
+          class="text-[#ffe53d] text-2xl tracking-wider font-bold w-fit bg-transparent border-none focus:outline-none placeholder:text-2xl placeholder:text-[#ffe53d] placeholder:opacity-50"
+          readonly data-passwordDisplay>
+        <!-- copy btn icon -->
+        <span id="copyButton" class="cursor-pointer relative"><i class="fa-regular fa-clone fa-lg"
+            style="color: #42f5ec"></i>
+          <div id="copyMsssge"
+            class="absolute bg-[#871c9c] text-[#ffe53d] py-1 px-2 rounded-3xl -top-10 -left-5  transition-all invisible text-xl"
+            data-copyMsg>Copied</div>
+        </span>
+      </div>
+
+      <!-- main container -->
+      <div
+        class="flex flex-col h-[27.5rem] w-fit sm:w-[28.5rem] bg-[#160628] rounded-2xl gap-7 px-[2rem] py-[2rem] border-b-[0.4rem] border-[#58077d]">
+        <!-- pwd length -->
+        <div class="flex items-center justify-between">
+          <span class="text-white text-2xl capitalize">Password length</span>
+          <span class="text-[#ffe53d] text-2xl" id="pwd-length-value">10</span>
         </div>
+
+        <!-- other stuff -->
+
+        <!-- slider - input how many letters would be there in the pwd -->
+        <input type="range" name="pwd-length" id="pwd-length" min="1" max="20" step="1" />
+
+        <div class="flex flex-col text-xl font-spartan leading-8 tracking-wide">
+          <div class="flex gap-4">
+            <input type="checkbox" name="uppercase" id="uppercase" checked />
+            <label for="uppercase" class="text-white">Include Uppercase Letters</label>
+          </div>
+          <div class="flex gap-4">
+            <input type="checkbox" name="lowercase" id="lowercase" />
+            <label for="lowercase" class="text-white">Include Lowercase Letters</label>
+          </div>
+          <div class="flex gap-4">
+            <input type="checkbox" name="numbers" id="numbers" />
+            <label for="numbers" class="text-white">Include Numbers</label>
+          </div>
+          <div class="flex gap-4">
+            <input type="checkbox" name="symbols" id="symbols" />
+            <label for="symbols" class="text-white">Include Symbols</label>
+          </div>
+        </div>
+
+        <!-- Strength of the password -->
+        <div class="flex items-center justify-between">
+          <span class="text-white text-2xl capitalize">Strength</span>
+          <div class="rounded-full h-[1.5rem] w-[1.5rem] bg-white opacity-80 transition-all duration-200 ease-in-out"
+            id="pwd-strength" data-displayPwdStrength></div>
+        </div>
+
+        <!-- generate btn -->
+        <button class="bg-[#bc15f4] w-full p-3 rounded-xl" id="generate-pwd-btn">
+          <span class="text-[#ffe53d] text-xl font-bold tracking-wider">GENERATE PASSWORD</span>
+        </button>
+      </div>
+
+      <p class="text-lg text-white ">Made with &#10084; |&nbsp; Parth Gupta</p>
     </div>
+  </div>
 
-    <script>
-        
-
-const pwdDisplay = document.querySelector("[data-passwordDisplay]");
-const copyMsg = document.querySelector("[data-copyMsg]");
-
-const pwdStrengthMsg = document.querySelector("[data-displayPwdStrength]");
-
-const allCheckBoxes = document.querySelectorAll("input[type=checkbox]");
-
-const uppercaseTick = document.querySelector("#uppercase");
-const lowercaseTick = document.querySelector("#lowercase");
-const numbersTick = document.querySelector("#numbers");
-const symbolsTick = document.querySelector("#symbols");
-
-let pwd = "";
-let pwdLength = 10;
-const value = document.querySelector("#pwd-length-value");
-const input = document.querySelector("#pwd-length");
-value.textContent = pwdLength;
-input.addEventListener("input", (event) => {
-  pwdLength = event.target.value;
-  // here we have set the length of the password which has been set by the user
-  handleSlider();
-});
-
-function handleSlider() {
-  value.textContent = pwdLength;
-  input.value = pwdLength;
-  // this will be displayed in the screen
-}
+  <script>
 
 
-function getRandomNumbers(length = 1) {
-  let randInt = "";
-  for (let i = 0; i < length; i++) {
-    randInt += Math.floor(Math.random() * 9 + 1);
-  }
-  return randInt;
-}
+    const pwdDisplay = document.querySelector("[data-passwordDisplay]");
+    const copyMsg = document.querySelector("[data-copyMsg]");
 
-let alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-function getRandomUppercase(length = 1) {
-  let randUpperCase = "";
-  for (let i = 0; i < length; i++) {
-    let randomNumber = Math.floor(Math.random() * 26);
-    randUpperCase += alphabets.toUpperCase().split("")[randomNumber];
-  }
-  return randUpperCase;
-}
+    const pwdStrengthMsg = document.querySelector("[data-displayPwdStrength]");
 
-function getRandomLowercase(length = 1) {
-  let randLowerCase = "";
-  for (let i = 0; i < length; i++) {
-    let randomNumber = Math.floor(Math.random() * 26);
-    randLowerCase += alphabets.toLowerCase().split("")[randomNumber];
-  }
-  return randLowerCase;
-}
+    const allCheckBoxes = document.querySelectorAll("input[type=checkbox]");
 
-let symbols = '~`!@#$%^&*()_-+={[}]|:;"<,>.?/';
-function getRandomSymbols(length = 1) {
-  let randSymbol = "";
-  for (let i = 0; i < length; i++) {
-    let randomNumber = Math.floor(Math.random() * symbols.length);
-    randSymbol += symbols.split("")[randomNumber];
-  }
-  return randSymbol;
-}
+    const uppercaseTick = document.querySelector("#uppercase");
+    const lowercaseTick = document.querySelector("#lowercase");
+    const numbersTick = document.querySelector("#numbers");
+    const symbolsTick = document.querySelector("#symbols");
 
-// now the function to copy from the clipboard thing
-let copyBtn = document.querySelector("#copyButton");
-copyBtn.addEventListener("click", checkcopyBtnHandler);
-
-function checkcopyBtnHandler() {
-  if (pwdDisplay.value) {
-    copyBtnHandler();
-  }
-}
-async function copyBtnHandler() {
-  try {
-    // this will copy the text to the clipboard
-    // get the element from where we need to copy the text
-
-    // pwdDisplay.select();
-    await navigator.clipboard.writeText(pwdDisplay.value);
-  } catch (error) {
-    console.log("was not able to ");
-  }
-
-  console.log(pwdDisplay.value);
-  // alert("Copied : ",pwdDisplay.textContent);
-  // its job is also to alert the user that the mssge is successfully copied
-  copyMsg.style.visibility = "visible";
-  setTimeout(() => {
-    copyMsg.style.visibility = "hidden";
-  }, 2000);
-}
-
-let checkboxCount = 0;
-
-allCheckBoxes.forEach((checkbox) => {
-  checkbox.addEventListener("change", handleCheckboxes);
-});
-
-function handleCheckboxes() {
-  checkboxCount = 0;
-  allCheckBoxes.forEach((checkbox) => {
-    if (checkbox.checked) {
-      checkboxCount++;
-
-    }
-    if (checkboxCount > pwdLength) {
-      pwdLength = checkboxCount;
+    let pwd = "";
+    let pwdLength = 10;
+    const value = document.querySelector("#pwd-length-value");
+    const input = document.querySelector("#pwd-length");
+    value.textContent = pwdLength;
+    input.addEventListener("input", (event) => {
+      pwdLength = event.target.value;
+      // here we have set the length of the password which has been set by the user
       handleSlider();
+    });
+
+    function handleSlider() {
+      value.textContent = pwdLength;
+      input.value = pwdLength;
+      // this will be displayed in the screen
     }
-  });
-  console.log(checkboxCount);
-}
-
-let checkedCheckboxList = [];
 
 
-// random number generator within the range
-
-function getARandomNumber(upto){
-  return Math.floor(Math.random() * upto);
-}
-
-// function getRandomPassword(length) {
-//   // length = 6 hai iska mtlb 6length ka pwd aur generate karna hai
-//   console.log("the rest of the pwd is : ",length)
-//   let pwdLengthToBeGenerated = length;
-//   let pwd = '';
-//   // yha pe randomNumber le liya hai out of that length ab simple hai 
-//   // basically utte length ki chize add krdo jitna random number aya hai
-//   // 
-  
-  
-  
-//   let i = 0
-//   while(pwdLengthToBeGenerated > 0) {
-//     let randNum = getARandomNumber(pwdLengthToBeGenerated);
-//     console.log("the random number which we got is : ",randNum,
-//       " out of ,",pwdLengthToBeGenerated
-//     );
-//     let myPwd = checkedCheckboxList[i](randNum);
-//     pwd += myPwd;
-//     console.log("the pwd at the current moment is : ",pwd);
-//     pwdLengthToBeGenerated-=randNum;
-//     i++;
-//   }
-// return pwd;
-
-
-// }
-
-function calculateStrength(){
-  let color = ""
-  if (checkboxCount>=3 && pwdLength>7){
-    color = "rgb(2, 240, 2)"
-  }
-  else if(checkboxCount >= 2 && pwdLength > 5){
-    color = "yellow"
-  }
-  else
-    color = "red"
-
-
-    pwdStrengthMsg.style.backgroundColor = color;
-    pwdStrengthMsg.style.boxShadow = `0 0 12px ${color}`
-}
-
-
-let generatePwdBtn = document.querySelector("#generate-pwd-btn");
-
-generatePwdBtn.addEventListener("click", () => {
-  // when anyone will click on the generate pwd btn it should know how many checkboxes are checked
-  handleCheckboxes();
-
-  if(checkboxCount === 0 )
-      return;
-
-  // checkBoxHandler();
-  // generate the pwd
-  pwd = ''
-  
-  // the compulsory addition
-
-  if (uppercaseTick.checked) {
-    if(!checkedCheckboxList.includes(getRandomUppercase)){
-      checkedCheckboxList.push(getRandomUppercase);
+    function getRandomNumbers(length = 1) {
+      let randInt = "";
+      for (let i = 0; i < length; i++) {
+        randInt += Math.floor(Math.random() * 9 + 1);
+      }
+      return randInt;
     }
-  }
-  if (lowercaseTick.checked) {
-    checkedCheckboxList.push(getRandomLowercase);
-  }
-  if(numbersTick.checked){
-    checkedCheckboxList.push(getRandomNumbers);
-  }
-  if(symbolsTick.checked){
+
+    let alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    function getRandomUppercase(length = 1) {
+      let randUpperCase = "";
+      for (let i = 0; i < length; i++) {
+        let randomNumber = Math.floor(Math.random() * 26);
+        randUpperCase += alphabets.toUpperCase().split("")[randomNumber];
+      }
+      return randUpperCase;
+    }
+
+    function getRandomLowercase(length = 1) {
+      let randLowerCase = "";
+      for (let i = 0; i < length; i++) {
+        let randomNumber = Math.floor(Math.random() * 26);
+        randLowerCase += alphabets.toLowerCase().split("")[randomNumber];
+      }
+      return randLowerCase;
+    }
+
+    let symbols = '~`!@#$%^&*()_-+={[}]|:;"<,>.?/';
+    function getRandomSymbols(length = 1) {
+      let randSymbol = "";
+      for (let i = 0; i < length; i++) {
+        let randomNumber = Math.floor(Math.random() * symbols.length);
+        randSymbol += symbols.split("")[randomNumber];
+      }
+      return randSymbol;
+    }
+
+    // now the function to copy from the clipboard thing
+    let copyBtn = document.querySelector("#copyButton");
+    copyBtn.addEventListener("click", checkcopyBtnHandler);
+
+    function checkcopyBtnHandler() {
+      if (pwdDisplay.value) {
+        copyBtnHandler();
+      }
+    }
+    async function copyBtnHandler() {
+      try {
+        // this will copy the text to the clipboard
+        // get the element from where we need to copy the text
+
+        // pwdDisplay.select();
+        await navigator.clipboard.writeText(pwdDisplay.value);
+      } catch (error) {
+        console.log("was not able to ");
+      }
+
+      console.log(pwdDisplay.value);
+      // alert("Copied : ",pwdDisplay.textContent);
+      // its job is also to alert the user that the mssge is successfully copied
+      copyMsg.style.visibility = "visible";
+      setTimeout(() => {
+        copyMsg.style.visibility = "hidden";
+      }, 2000);
+    }
+
+    let checkboxCount = 0;
+
+    allCheckBoxes.forEach((checkbox) => {
+      checkbox.addEventListener("change", handleCheckboxes);
+    });
+
+    function handleCheckboxes() {
+      checkboxCount = 0;
+      allCheckBoxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          checkboxCount++;
+          return;
+        }
+        if (checkboxCount > pwdLength) {
+          pwdLength = checkboxCount;
+          handleSlider();
+        }
+      });
+      console.log(checkboxCount);
+    }
+
+    let checkedCheckboxList = [];
+
+
+    // random number generator within the range
+
+    function getARandomNumber(upto) {
+      return Math.floor(Math.random() * upto);
+    }
+
+    // function getRandomPassword(length) {
+    //   // length = 6 hai iska mtlb 6length ka pwd aur generate karna hai
+    //   console.log("the rest of the pwd is : ",length)
+    //   let pwdLengthToBeGenerated = length;
+    //   let pwd = '';
+    //   // yha pe randomNumber le liya hai out of that length ab simple hai 
+    //   // basically utte length ki chize add krdo jitna random number aya hai
+    //   // 
+
+
+
+    //   let i = 0
+    //   while(pwdLengthToBeGenerated > 0) {
+    //     let randNum = getARandomNumber(pwdLengthToBeGenerated);
+    //     console.log("the random number which we got is : ",randNum,
+    //       " out of ,",pwdLengthToBeGenerated
+    //     );
+    //     let myPwd = checkedCheckboxList[i](randNum);
+    //     pwd += myPwd;
+    //     console.log("the pwd at the current moment is : ",pwd);
+    //     pwdLengthToBeGenerated-=randNum;
+    //     i++;
+    //   }
+    // return pwd;
+
+
+    // }
+
+    function calculateStrength() {
+      let color = ""
+      if (checkboxCount >= 3 && pwdLength > 7) {
+        color = "rgb(2, 240, 2)"
+      }
+      else if (checkboxCount >= 2 && pwdLength > 5) {
+        color = "yellow"
+      }
+      else
+        color = "red"
+
+
+      pwdStrengthMsg.style.backgroundColor = color;
+      pwdStrengthMsg.style.boxShadow = `0 0 12px ${color}`
+    }
+
+
+    let generatePwdBtn = document.querySelector("#generate-pwd-btn");
+
+    generatePwdBtn.addEventListener("click", () => {
+      // when anyone will click on the generate pwd btn it should know how many checkboxes are checked
+      handleCheckboxes();
+
+      if (checkboxCount === 0) {
+        alert("Please select atleast one checkbox to proceed");
+        return;
+      }
+
+      // checkBoxHandler();
+      // generate the pwd
+      pwd = ''
+
+      // the compulsory addition
+
+      if (uppercaseTick.checked) {
+        if (!checkedCheckboxList.includes(getRandomUppercase)) {
+          checkedCheckboxList.push(getRandomUppercase);
+        }
+      }
+      if (lowercaseTick.checked) {
+        checkedCheckboxList.push(getRandomLowercase);
+      }
+      if (numbersTick.checked) {
+        checkedCheckboxList.push(getRandomNumbers);
+      }
+      if (symbolsTick.checked) {
         checkedCheckboxList.push(getRandomSymbols);
-  }
+      }
 
-  console.log(checkedCheckboxList)
-  
-  checkedCheckboxList.forEach(
-    fun => {
-      pwd += fun();
+      console.log(checkedCheckboxList)
+
+      checkedCheckboxList.forEach(fun => {
+        pwd += fun();
+        console.log(fun);
+      }
+      )
+
+
+      // the remaining addition
+      for (let i = 0; i < pwdLength - checkedCheckboxList.length; i++) {
+        console.log("there it is")
+        let num = getARandomNumber(checkedCheckboxList.length);
+        console.log("the random number is : ", num)
+        let sme = checkedCheckboxList[num]()
+        pwd += sme;
+
+      }
+      let new_pwd = shufflePassword(Array.from(pwd));
+      pwdDisplay.value = new_pwd
+
+      calculateStrength();
+
+      checkedCheckboxList = []
+    });
+
+    function shufflePassword(password) {
+      if (password.length === 1)
+        return password;
+      for (let i = password.length - 1; i >= 0; i--) {
+        let j = Math.floor(Math.random() * i + 1);
+        let temp = password[i];
+        password[i] = password[j];
+        password[j] = temp;
+      }
+      console.log("After", password);
+      let str = "";
+      password.forEach((element) => { str += element });
+      return str;
     }
-  )
 
 
-  // the remaining addition
-  for (let i = 0; i < pwdLength-checkedCheckboxList.length; i++) {
-    console.log("there it is")
-    let num =  getARandomNumber(checkedCheckboxList.length);
-    console.log("the random number is : ",num)
-    let sme = checkedCheckboxList[num]()
-    pwd += sme;
-    
-  }
-  let new_pwd = shufflePassword(Array.from(pwd));
-  pwdDisplay.value = new_pwd
-
-  calculateStrength();
-
-  checkedCheckboxList = []
-});
-
-function shufflePassword(password) {
-  console.log("Before",password)
-  for (let i = password.length-1; i>=0 ; i--) {
-    let j = Math.floor(Math.random() * i + 1);
-    let temp = password[i];
-    password[i] = password[j];
-    password[j] = temp;
-  }
-  console.log("After",password);
-  let str = "";
-  password.forEach((element)=>{str+=element});
-  return str;
-}
-    </script>
+  </script>
 </body>
 
 </html>
