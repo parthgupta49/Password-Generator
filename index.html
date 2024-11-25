@@ -323,7 +323,7 @@
         console.log("was not able to ");
       }
 
-      console.log(pwdDisplay.value);
+      // console.log(pwdDisplay.value);
       // alert("Copied : ",pwdDisplay.textContent);
       // its job is also to alert the user that the mssge is successfully copied
       copyMsg.style.visibility = "visible";
@@ -345,15 +345,12 @@
           checkboxCount++;
           return;
         }
-        console.log("password ki length haii : ",pwdLength);
-        
+
       });
       if (checkboxCount > pwdLength) {
-        console.log("slider ko sahi karo")
         pwdLength = checkboxCount;
         handleSlider();
       }
-      console.log("Checkbox count haii : ",checkboxCount);
     }
 
     let checkedCheckboxList = [];
@@ -442,20 +439,20 @@
         checkedCheckboxList.push(getRandomSymbols);
       }
 
-      console.log(checkedCheckboxList)
+      // console.log(checkedCheckboxList)
 
       checkedCheckboxList.forEach(fun => {
         pwd += fun();
-        console.log(fun);
+        // console.log(fun);
       }
       )
 
 
       // the remaining addition
       for (let i = 0; i < pwdLength - checkedCheckboxList.length; i++) {
-        console.log("there it is")
+        // console.log("there it is")
         let num = getARandomNumber(checkedCheckboxList.length);
-        console.log("the random number is : ", num)
+        // console.log("the random number is : ", num)
         let sme = checkedCheckboxList[num]()
         pwd += sme;
 
@@ -477,7 +474,7 @@
         password[i] = password[j];
         password[j] = temp;
       }
-      console.log("After", password);
+      // console.log("After", password);
       let str = "";
       password.forEach((element) => { str += element });
       return str;
