@@ -345,12 +345,15 @@
           checkboxCount++;
           return;
         }
-        if (checkboxCount > pwdLength) {
-          pwdLength = checkboxCount;
-          handleSlider();
-        }
+        console.log("password ki length haii : ",pwdLength);
+        
       });
-      console.log(checkboxCount);
+      if (checkboxCount > pwdLength) {
+        console.log("slider ko sahi karo")
+        pwdLength = checkboxCount;
+        handleSlider();
+      }
+      console.log("Checkbox count haii : ",checkboxCount);
     }
 
     let checkedCheckboxList = [];
